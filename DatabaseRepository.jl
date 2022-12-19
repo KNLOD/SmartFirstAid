@@ -40,6 +40,11 @@ function create_table()
 	close(conn)
 end
 
+"""
+Сохраняет ключ в базуданных в таблицу keys
+
+"""
+
 function save_key(key::String, lvl::String)
 	conn = connect_to_db()
 	key = getKey(key) 
@@ -50,6 +55,12 @@ function save_key(key::String, lvl::String)
 	close(conn)
 
 end
+
+"""
+Проверяет наличие ключа в базе данных 
+Если есть возвращает Result(уровень доступа, true) 
+Иначе Result("0", false) - в доступе отказано уровень доступа 0
+"""
 
 function is_key_in_db(key::String)
 	conn = connect_to_db()
